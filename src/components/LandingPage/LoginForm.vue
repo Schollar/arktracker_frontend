@@ -53,7 +53,6 @@ export default {
   methods: {
     login_user() {
       // Get the value from the username and password filled out and use that data to pass to our api call
-
       var username = this.username;
       var password = this.password;
       this.$axios
@@ -70,7 +69,7 @@ export default {
         // Router push to change to the feed page
         .then((response) => {
           response;
-          // this.$cookies.set("user", response.data);
+          this.$cookies.set("logintoken", response.data["loginToken"]);
           this.$store.commit("update_user", response.data);
           this.$router.push({ path: "/main-page" });
         })

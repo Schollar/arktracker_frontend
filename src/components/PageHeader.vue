@@ -1,0 +1,88 @@
+<template>
+  <!-- Start of Navigation -->
+  <nav>
+    <!-- Start of app toolbar -->
+    <v-app-bar app prominent src="../assets/banner.jpg">
+      <v-app-bar-nav-icon
+        color="#b58141"
+        v-show="!$vuetify.breakpoint.lg"
+        @click.stop="drawer = !drawer"
+      ></v-app-bar-nav-icon>
+      <v-toolbar-title class="headline text-uppercase primary--text"
+        >Ark Tracker</v-toolbar-title
+      >
+      <v-spacer></v-spacer>
+      <section class="button_container" v-show="$vuetify.breakpoint.lg">
+        <v-btn class="color primary white--text" to="/" exact>Home</v-btn>
+        <v-btn class="color primary white--text" to="/about">Profile</v-btn>
+        <v-btn class="color primary white--text" to="/services">Services</v-btn>
+      </section>
+    </v-app-bar>
+
+    <!-- End of app toolbar -->
+
+    <!-- Start of mobile side menu -->
+    <v-navigation-drawer app v-model="drawer" temporary bottom>
+      <!-- Menu title -->
+      <v-toolbar flat>
+        <v-list>
+          <v-list-item>
+            <v-list-item-title class="title">Menu</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-toolbar>
+      <v-divider></v-divider>
+      <!-- Menu Links -->
+      <v-list>
+        <v-list-item to="/">
+          <v-list-item-action>
+            <v-icon>home</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>Home</v-list-item-content>
+        </v-list-item>
+        <v-list-item to="/about">
+          <v-list-item-action>
+            <v-icon>description</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>About</v-list-item-content>
+        </v-list-item>
+        <v-list-item to="/services">
+          <v-list-item-action>
+            <v-icon>home</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>Services</v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <!-- End of mobile side menu -->
+  </nav>
+</template>
+
+<script>
+export default {
+  name: "page-header",
+  data() {
+    return {
+      drawer: false, // Hide mobile side menu by default
+    };
+  },
+};
+</script>
+
+<style scoped>
+.headline {
+  display: grid;
+  font-size: 46px !important;
+  place-self: center !important;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
+}
+.button_container {
+  display: grid;
+  place-items: end;
+  grid-auto-flow: column;
+  height: 100%;
+}
+.v-btn {
+  margin-left: 20px;
+}
+</style>

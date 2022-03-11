@@ -90,7 +90,7 @@ export default {
         // Router push to change to the feed page
         .then((response) => {
           response;
-          // this.$cookies.set("user", response.data);
+          this.$cookies.set("logintoken", response.data["loginToken"]);
           this.$store.commit("update_user", response.data);
           this.$router.push({ path: "/main-page" });
         })
