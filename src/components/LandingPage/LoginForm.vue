@@ -71,7 +71,7 @@ export default {
         .then((response) => {
           response;
           // this.$cookies.set("user", response.data);
-          // this.$store.commit("update_user", response.data);
+          this.$store.commit("update_user", response.data);
           this.$router.push({ path: "/main-page" });
         })
         .catch((error) => {
