@@ -67,18 +67,16 @@ export default {
         // On success we set a cookie user cookie
         // Call update user mutation
         // Router push to change to the feed page
-        .then((response) => {
+        .then(({ response }) => {
           response;
           this.$cookies.set("logintoken", response.data["loginToken"]);
+          this.$cookies.set("userId", response.data["userId"]);
           this.$store.commit("update_user", response.data);
           this.$router.push({ path: "/main-page" });
         })
         .catch((error) => {
-          error;
-          this.$root.$emit(
-            "api_message",
-            "Sorry something went wrong with logging in. Please try again later"
-          );
+          console.log(error.response);
+          this.$root.$emit("error_message", "Invalid Username or Password");
         });
     },
   },

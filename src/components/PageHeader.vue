@@ -5,14 +5,14 @@
     <v-app-bar app prominent src="../assets/banner.jpg">
       <v-app-bar-nav-icon
         color="#b58141"
-        v-show="!$vuetify.breakpoint.lg"
+        v-show="$vuetify.breakpoint.mdAndDown"
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
       <v-toolbar-title class="headline text-uppercase primary--text"
         >Ark Tracker</v-toolbar-title
       >
       <v-spacer></v-spacer>
-      <section class="button_container" v-show="$vuetify.breakpoint.lg">
+      <section class="button_container" v-show="$vuetify.breakpoint.lgAndUp">
         <v-btn class="color primary white--text" to="/" exact>Home</v-btn>
         <v-btn class="color primary white--text" to="/about">Profile</v-btn>
         <v-btn class="color primary white--text" to="/services">Services</v-btn>

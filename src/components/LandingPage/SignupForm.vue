@@ -92,13 +92,14 @@ export default {
           response;
           this.$cookies.set("logintoken", response.data["loginToken"]);
           this.$store.commit("update_user", response.data);
+          this.$cookies.set("userId", response.data["userId"]);
           this.$router.push({ path: "/main-page" });
         })
         .catch((error) => {
           error;
           this.$root.$emit(
-            "api_message",
-            "Sorry something went wrong with logging in. Please try again later"
+            "error_message",
+            "Invalid Username or password. Please try again."
           );
         });
     },
