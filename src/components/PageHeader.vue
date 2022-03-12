@@ -15,7 +15,9 @@
       <section class="button_container" v-show="$vuetify.breakpoint.lgAndUp">
         <v-btn class="color primary white--text" to="/" exact>Home</v-btn>
         <v-btn class="color primary white--text" to="/about">Profile</v-btn>
-        <v-btn class="color primary white--text" to="/services">Services</v-btn>
+        <v-btn class="color primary white--text" @click="logout()"
+          >Log Out</v-btn
+        >
       </section>
     </v-app-bar>
 
@@ -61,6 +63,12 @@
 <script>
 export default {
   name: "page-header",
+  methods: {
+    logout() {
+      this.$cookies.remove("logintoken");
+      this.$router.push({ path: "/" });
+    },
+  },
   data() {
     return {
       drawer: false, // Hide mobile side menu by default

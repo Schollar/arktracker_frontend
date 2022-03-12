@@ -67,7 +67,7 @@ export default {
         // On success we set a cookie user cookie
         // Call update user mutation
         // Router push to change to the feed page
-        .then(({ response }) => {
+        .then((response) => {
           response;
           this.$cookies.set("logintoken", response.data["loginToken"]);
           this.$cookies.set("userId", response.data["userId"]);

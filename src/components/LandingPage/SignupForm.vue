@@ -51,7 +51,8 @@ export default {
     usernameRules: [
       (v) => !!v || "Username is required",
       (v) =>
-        (v && v.length <= 15) || "Username must be less than 15 characters",
+        (v && v.length <= 15 && v.length >= 3) ||
+        "Username must be less than 15 characters and greater than 3",
     ],
     email: "",
     emailRules: [

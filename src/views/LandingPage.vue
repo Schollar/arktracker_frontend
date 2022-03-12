@@ -30,14 +30,22 @@ export default {
   components: { LoginForm, SignupForm },
   data() {
     return {
-      current_component: "SignupForm",
+      current_component: "LoginForm",
       component_views: ["SignupForm", "LoginForm"],
     };
+  },
+  mounted() {
+    this.auth_user();
   },
   methods: {
     // Function that updates a variable to show what component is shown on the page
     update_component(component) {
       this.current_component = component;
+    },
+    auth_user() {
+      if (this.$cookies.get("logintoken") !== null) {
+        this.$router.push({ path: "/main-page" });
+      }
     },
   },
 };
