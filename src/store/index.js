@@ -11,6 +11,9 @@ export default new Vuex.Store({
   mutations: {
     update_user(state, payload) {
       state.user = payload
+    },
+    update_user_characters(state, payload) {
+      state.user_characters = payload
     }
   },
   actions: {

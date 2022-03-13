@@ -1,12 +1,13 @@
 <template>
   <v-expansion-panels focusable>
-    <v-expansion-panel v-for="(item, i) in 5" :key="i">
-      <v-expansion-panel-header>Item</v-expansion-panel-header>
+    <v-expansion-panel v-for="char in user_characters" :key="char.id">
+      <v-expansion-panel-header
+        >{{ char.name }} <v-spacer></v-spacer
+        >{{ char.class }}</v-expansion-panel-header
+      >
       <v-expansion-panel-content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        Character tasks underway // Make new task requests will go here
+        {{ char.name }}
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-expansion-panels>
@@ -16,9 +17,12 @@
 export default {
   name: "user-characters",
   computed: {
-    user_tweets() {
+    user_characters() {
       return this.$store.state.user_characters;
     },
+  },
+  mounted() {
+    this.get_characters();
   },
   methods: {
     get_characters() {
@@ -35,8 +39,7 @@ export default {
         // Call update user mutation
         // Router push to change to the feed page
         .then((response) => {
-          this.$store.commit("update_user", response.data);
-          this.$router.push({ path: "/main-page" });
+          this.$store.commit("update_user_characters", response.data);
         })
         .catch((error) => {
           console.log(error.response);
