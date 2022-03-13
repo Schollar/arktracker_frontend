@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    user_characters: []
   },
   mutations: {
     update_user(state, payload) {

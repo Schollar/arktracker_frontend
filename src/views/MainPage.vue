@@ -1,13 +1,15 @@
 <template>
   <div class="page_body">
     <page-header></page-header>
+    <user-characters></user-characters>
   </div>
 </template>
 
 <script>
 import PageHeader from "../components/PageHeader.vue";
+import UserCharacters from "../components/MainPage/UserCharacters.vue";
 export default {
-  components: { PageHeader },
+  components: { PageHeader, UserCharacters },
   name: "main-page",
   mounted() {
     // Running login token check when page is mounted

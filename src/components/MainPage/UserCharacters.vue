@@ -13,7 +13,38 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "user-characters",
+  computed: {
+    user_tweets() {
+      return this.$store.state.user_characters;
+    },
+  },
+  methods: {
+    get_characters() {
+      var userId = this.$cookies.get("userId");
+      this.$axios
+        .request({
+          url: `${process.env.VUE_APP_API_URL}/api/characters`,
+          method: "GET",
+          params: {
+            userId: userId,
+          },
+        })
+        // On success we set a cookie user cookie
+        // Call update user mutation
+        // Router push to change to the feed page
+        .then((response) => {
+          this.$store.commit("update_user", response.data);
+          this.$router.push({ path: "/main-page" });
+        })
+        .catch((error) => {
+          console.log(error.response);
+          this.$root.$emit("error_message", "Invalid Username or Password");
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
