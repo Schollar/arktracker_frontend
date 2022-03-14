@@ -1,20 +1,19 @@
 <template>
-  <v-expansion-panels focusable>
-    <v-expansion-panel v-for="char in user_characters" :key="char.id">
+  <v-expansion-panels focusable class="characters">
+    <v-expansion-panel v-for="char in user_characters" :key="char.charId">
       <v-expansion-panel-header
         >{{ char.name }} <v-spacer></v-spacer
         >{{ char.class }}</v-expansion-panel-header
       >
-      <v-expansion-panel-content>
-        Character tasks underway // Make new task requests will go here
-        {{ char.name }}
-      </v-expansion-panel-content>
+      <character-tasks :character="char"></character-tasks>
     </v-expansion-panel>
   </v-expansion-panels>
 </template>
 
 <script>
+import CharacterTasks from "./CharacterTasks.vue";
 export default {
+  components: { CharacterTasks },
   name: "user-characters",
   computed: {
     user_characters() {
@@ -51,4 +50,7 @@ export default {
 </script>
 
 <style scoped>
+.characters {
+  width: 60%;
+}
 </style>

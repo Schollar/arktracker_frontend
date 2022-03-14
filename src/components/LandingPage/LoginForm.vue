@@ -70,11 +70,7 @@ export default {
         .then((response) => {
           response;
           this.$cookies.set("logintoken", response.data["loginToken"]);
-          this.$cookies.set("userId", response.data["userId"], {
-            domain: "http://127.0.0.1:8080",
-            sameSite: "none",
-            secure: true,
-          });
+          this.$cookies.set("userId", response.data["userId"]);
           this.$store.commit("update_user", response.data);
           this.$router.push({ path: "/main-page" });
         })
