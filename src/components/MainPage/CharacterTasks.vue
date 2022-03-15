@@ -1,43 +1,72 @@
 <template>
-  <v-expansion-panel-content>
-    <h1>DAILY TASKS</h1>
-    <section v-if="character_tasks['daily'] < 1">
-      <p>This character has no daily tasks!</p>
-    </section>
-    <section v-else v-for="task in character_tasks['daily']" :key="task.taskId">
-      {{ task.taskName }}
-      {{ task.taskDescription }}
-      {{ task.taskType }}
-    </section>
-    <h1>WEEKLY TASKS</h1>
-    <section v-if="character_tasks['weekly'] < 1">
-      <p>This character has no weekly tasks!</p>
-    </section>
-    <section
-      v-else
-      v-for="task in character_tasks['weekly']"
-      :key="task.taskId"
-    >
-      {{ task.taskName }}
-      {{ task.taskDescription }}
-      {{ task.taskType }}
-    </section>
-  </v-expansion-panel-content>
+  <div>
+    <v-expansion-panel-content>
+      <section class="tasks_headings">
+        <h3>DAILY TASKS</h3>
+        <v-btn
+          color="#B58141"
+          class="add_task"
+          @click="form_visible = !form_visible"
+          >Add Task</v-btn
+        >
+      </section>
+      <section class="tasks">
+        <section v-if="character_tasks['daily'] < 1">
+          <p>This character has no daily tasks!</p>
+        </section>
+        <section
+          v-else
+          v-for="task in character_tasks['daily']"
+          :key="task.taskId"
+        >
+          <section class="task_name">
+            {{ task.taskName }} {{ task.taskType }}
+          </section>
+          <v-divider></v-divider>
+          {{ task.taskDescription }}
+        </section>
+        <v-divider></v-divider>
+        <h1>WEEKLY TASKS</h1>
+        <section v-if="character_tasks['weekly'] < 1">
+          <p>This character has no weekly tasks!</p>
+        </section>
+        <section
+          v-else
+          v-for="task in character_tasks['weekly']"
+          :key="task.taskId"
+        >
+          {{ task.taskName }}
+          {{ task.taskDescription }}
+          {{ task.taskType }}
+        </section>
+      </section>
+    </v-expansion-panel-content>
+    <add-task-form
+      @form_close="close_form"
+      v-show="form_visible"
+    ></add-task-form>
+  </div>
 </template>
 
 <script>
+import AddTaskForm from "./AddTaskForm.vue";
 export default {
+  components: { AddTaskForm },
   name: "character-tasks",
   data() {
     return {
       u_character: this.character,
       character_tasks: [],
+      form_visible: false,
     };
   },
   mounted() {
     this.get_characters_tasks();
   },
   methods: {
+    close_form() {
+      this.form_visible = false;
+    },
     get_characters_tasks() {
       var charId = this.character.charId;
       this.$axios
@@ -67,4 +96,18 @@ export default {
 </script>
 
 <style scoped>
+.tasks_headings {
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
+  margin-top: 10px;
+}
+.add_task {
+  font-size: 10px;
+  width: 55px;
+  height: 28px !important;
+}
+.tasks {
+  margin-top: 25px;
+}
 </style>

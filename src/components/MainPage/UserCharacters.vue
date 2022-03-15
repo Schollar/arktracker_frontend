@@ -1,13 +1,14 @@
 <template>
-  <v-expansion-panels focusable class="characters">
-    <v-expansion-panel v-for="char in user_characters" :key="char.charId">
-      <v-expansion-panel-header
-        >{{ char.name }} <v-spacer></v-spacer
-        >{{ char.class }}</v-expansion-panel-header
-      >
-      <character-tasks :character="char"></character-tasks>
-    </v-expansion-panel>
-  </v-expansion-panels>
+  <div class="character_container">
+    <v-expansion-panels focusable class="characters">
+      <v-expansion-panel v-for="char in user_characters" :key="char.charId">
+        <v-expansion-panel-header
+          >{{ char.name }} {{ char.class }}<v-spacer></v-spacer>
+        </v-expansion-panel-header>
+        <character-tasks :character="char"></character-tasks>
+      </v-expansion-panel>
+    </v-expansion-panels>
+  </div>
 </template>
 
 <script>
@@ -51,6 +52,11 @@ export default {
 
 <style scoped>
 .characters {
-  width: 60%;
+  width: 70%;
+  margin-top: 50px;
+}
+.character_container {
+  display: grid;
+  place-items: center;
 }
 </style>
