@@ -42,6 +42,7 @@
       </section>
     </v-expansion-panel-content>
     <add-task-form
+      :charId="character.charId"
       @form_close="close_form"
       v-show="form_visible"
     ></add-task-form>

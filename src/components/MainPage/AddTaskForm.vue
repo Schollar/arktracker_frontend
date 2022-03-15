@@ -19,29 +19,62 @@
     ></v-text-field>
     <v-select
       class="input"
+      v-model="type"
       :items="items"
       label="Task Type"
       dense
       dark
     ></v-select>
-    <v-btn color="#B58141" class="mr-4" @click="login_user()" dark>
+    <v-btn color="#B58141" class="mr-4" @click="add_task" dark>
       Start Task
     </v-btn>
-    <v-btn color="red" class="mr-4" @click="close_form()" dark> Close </v-btn>
+    <v-btn color="red" class="mr-4" @click="close_form" dark> Close </v-btn>
   </v-form>
 </template>
 
 <script>
 export default {
   name: "add-task-form",
+  props: {
+    charId: Number,
+  },
   methods: {
     close_form() {
       this.$emit("form_close");
+    },
+
+    add_task() {
+      var userId = this.$cookies.get("userId");
+      var taskname = this.name;
+      var taskdescription = this.description;
+      var tasktype = this.type;
+      this.$axios
+        .request({
+          url: `${process.env.VUE_APP_API_URL}/api/character-tasks`,
+          method: "POST",
+          data: {
+            userId: userId,
+            taskName: taskname,
+            taskDescription: taskdescription,
+            taskType: tasktype,
+            charId: this.charId,
+          },
+        })
+        .then((response) => {
+          response;
+        })
+        .catch((error) => {
+          console.log(error.response);
+          this.$root.$emit("error_message", "Invalid Username or Password");
+        });
     },
   },
   data() {
     return {
       items: ["Daily", "Weekly"],
+      name: "",
+      description: "",
+      type: "",
     };
   },
 };
