@@ -1,15 +1,6 @@
 <template>
   <section class="alert">
-    <v-alert
-      color="green"
-      :value="success_alert"
-      dense
-      dismissible
-      outlined
-      prominent
-      text
-      type="success"
-    >
+    <v-alert :value="success_alert" dismissible type="success">
       {{ success_message }}
     </v-alert>
     <v-alert
@@ -18,7 +9,6 @@
       dismissible
       outlined
       prominent
-      text
       :value="error_alert"
       type="error"
     >
@@ -49,10 +39,16 @@ export default {
     show_success: function (string) {
       this.success_message = string;
       this.success_alert = true;
+      setInterval(() => {
+        this.success_alert = false;
+      }, 3000);
     },
     show_error: function (string) {
       this.error_message = string;
       this.error_alert = true;
+      setInterval(() => {
+        this.error_alert = false;
+      }, 3000);
     },
   },
 };

@@ -62,9 +62,13 @@ export default {
         })
         .then((response) => {
           response;
+          this.$emit("form_close");
+          this.$root.$emit("add_task", taskId);
+          this.$root.$emit("success_message", "Tracking new task!");
+          this.$root.$emit("add_task");
         })
         .catch((error) => {
-          console.log(error.response);
+          error;
           this.$root.$emit("error_message", "Invalid Username or Password");
         });
     },
@@ -83,8 +87,7 @@ export default {
 <style lang="scss" scoped>
 form {
   position: absolute;
-  top: 50%;
-  left: 15%;
+  top: 25%;
   z-index: 4;
   color: white;
 }

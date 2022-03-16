@@ -1,12 +1,14 @@
 module.exports = {
   configureWebpack: {
-    devtool: 'source-map'
+    devtool: 'eval-source-map',
+
   },
   transpileDependencies: [
     'vuetify'
   ],
   devServer: {
     disableHostCheck: true,
-    proxy: 'http://localtesting.com'
+    proxy: 'http://localtesting.com',
+
   }
 }

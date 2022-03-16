@@ -29,6 +29,6 @@ export default {
 <style scoped>
 .page_body {
   background-color: #15161a;
-  height: 100vh;
+  height: 100%;
 }
 </style>

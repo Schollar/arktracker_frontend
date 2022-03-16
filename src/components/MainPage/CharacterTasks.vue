@@ -1,45 +1,12 @@
 <template>
   <div>
     <v-expansion-panel-content>
-      <section class="tasks_headings">
-        <h3>DAILY TASKS</h3>
-        <v-btn
-          color="#B58141"
-          class="add_task"
-          @click="form_visible = !form_visible"
-          >Add Task</v-btn
-        >
-      </section>
-      <section class="tasks">
-        <section v-if="character_tasks['daily'] < 1">
-          <p>This character has no daily tasks!</p>
-        </section>
-        <section
-          v-else
-          v-for="task in character_tasks['daily']"
-          :key="task.taskId"
-        >
-          <section class="task_name">
-            {{ task.taskName }} {{ task.taskType }}
-          </section>
-          <v-divider></v-divider>
-          {{ task.taskDescription }}
-        </section>
-        <v-divider></v-divider>
-        <h1>WEEKLY TASKS</h1>
-        <section v-if="character_tasks['weekly'] < 1">
-          <p>This character has no weekly tasks!</p>
-        </section>
-        <section
-          v-else
-          v-for="task in character_tasks['weekly']"
-          :key="task.taskId"
-        >
-          {{ task.taskName }}
-          {{ task.taskDescription }}
-          {{ task.taskType }}
-        </section>
-      </section>
+      <v-divider class="heading_divider"></v-divider>
+      <daily-tasks
+        @show_form="form_visible = true"
+        :character_tasks="character_tasks"
+      ></daily-tasks>
+      <weekly-tasks :character_tasks="character_tasks"></weekly-tasks>
     </v-expansion-panel-content>
     <add-task-form
       :charId="character.charId"
@@ -51,8 +18,10 @@
 
 <script>
 import AddTaskForm from "./AddTaskForm.vue";
+import DailyTasks from "./DailyTasks.vue";
+import WeeklyTasks from "./WeeklyTasks.vue";
 export default {
-  components: { AddTaskForm },
+  components: { AddTaskForm, DailyTasks, WeeklyTasks },
   name: "character-tasks",
   data() {
     return {
@@ -63,10 +32,19 @@ export default {
   },
   mounted() {
     this.get_characters_tasks();
+    this.$root.$on("delete_task", this.delete_task);
   },
   methods: {
     close_form() {
       this.form_visible = false;
+    },
+    delete_task(taskId) {
+      this.character_tasks["weekly"] = this.character_tasks["weekly"].filter(
+        (task) => task.taskId !== taskId
+      );
+      this.character_tasks["daily"] = this.character_tasks["daily"].filter(
+        (task) => task.taskId !== taskId
+      );
     },
     get_characters_tasks() {
       var charId = this.character.charId;
@@ -97,18 +75,4 @@ export default {
 </script>
 
 <style scoped>
-.tasks_headings {
-  display: grid;
-  grid-auto-flow: column;
-  place-items: center;
-  margin-top: 10px;
-}
-.add_task {
-  font-size: 10px;
-  width: 55px;
-  height: 28px !important;
-}
-.tasks {
-  margin-top: 25px;
-}
 </style>
