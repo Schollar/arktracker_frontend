@@ -33,7 +33,7 @@
 export default {
   name: "weekly-tasks",
   props: {
-    character_tasks: Array,
+    character_tasks: Object,
   },
 };
 </script>

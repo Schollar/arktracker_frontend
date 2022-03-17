@@ -61,11 +61,10 @@ export default {
           },
         })
         .then((response) => {
-          response;
+          var new_task = response.data;
           this.$emit("form_close");
-          this.$root.$emit("add_task", taskId);
           this.$root.$emit("success_message", "Tracking new task!");
-          this.$root.$emit("add_task");
+          this.$root.$emit("add_task", new_task);
         })
         .catch((error) => {
           error;

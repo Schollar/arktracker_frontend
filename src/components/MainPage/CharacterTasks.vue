@@ -33,10 +33,19 @@ export default {
   mounted() {
     this.get_characters_tasks();
     this.$root.$on("delete_task", this.delete_task);
+    this.$root.$on("add_task", this.add_task);
   },
   methods: {
     close_form() {
       this.form_visible = false;
+    },
+    add_task(task) {
+      console.log(task);
+      if (task.taskType === "Daily") {
+        this.character_tasks["daily"].push(task);
+      } else {
+        this.character_tasks["weekly"].push(task);
+      }
     },
     delete_task(taskId) {
       this.character_tasks["weekly"] = this.character_tasks["weekly"].filter(

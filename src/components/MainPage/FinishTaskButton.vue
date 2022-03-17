@@ -1,5 +1,5 @@
 <template>
-  <v-btn icon class="task_button" @click="complete_task(task.taskId)"
+  <v-btn icon class="task_button" @click="complete_task(taskId)"
     ><img class="button_icon" src="@/assets/success.png" alt="Trash can Icon" />
   </v-btn>
 </template>
@@ -7,6 +7,34 @@
 <script>
 export default {
   name: "finish-task-button",
+  props: {
+    taskId: Number,
+  },
+  methods: {
+    complete_task(taskId) {
+      this.$axios
+        .request({
+          url: `${process.env.VUE_APP_API_URL}/api/character-tasks`,
+          method: "PATCH",
+          data: {
+            taskId: taskId,
+          },
+        })
+        // Emit another event to put task into completed task list.
+        .then((response) => {
+          response;
+          this.$root.$emit("delete_task", taskId);
+          this.$root.$emit("success_message", "Task has been completed!");
+        })
+        .catch((error) => {
+          console.log(error.response);
+          this.$root.$emit(
+            "error_message",
+            "Something went wrong deleting the task."
+          );
+        });
+    },
+  },
 };
 </script>
 
