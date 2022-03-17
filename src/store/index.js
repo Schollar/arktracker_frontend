@@ -16,7 +16,7 @@ export default new Vuex.Store({
       state.user_characters = payload
     },
     add_user_character(state, payload) {
-      state.user_characters.append(payload)
+      state.user_characters.push(payload)
     }
   },
   actions: {

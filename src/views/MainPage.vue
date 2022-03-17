@@ -2,6 +2,7 @@
   <div class="page_body">
     <page-header></page-header>
     <v-btn @click="form_visible = true">Add Character</v-btn>
+    <v-btn @click="delete_form_visible = true">Delete Character</v-btn>
     <user-characters></user-characters>
     <add-character-form
       v-show="form_visible"
@@ -20,6 +21,7 @@ export default {
   data() {
     return {
       form_visible: false,
+      delete_form_visible: false,
     };
   },
   mounted() {

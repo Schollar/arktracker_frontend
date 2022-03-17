@@ -56,6 +56,10 @@ export default {
   methods: {
     close_form() {
       this.$emit("form_close");
+      this.reset();
+    },
+    reset() {
+      this.$refs.form.reset();
     },
     add_character() {
       var userId = this.$cookies.get("userId");
@@ -71,14 +75,17 @@ export default {
             class: charClass,
           },
         })
-        // EMIT TO ADD CHARACTER TO LIST
         .then((response) => {
-          this.$root.$emit("add_character", response.data);
-          // this.$store.commit("add_user_character", response.data);
+          this.$store.commit("add_user_character", response.data);
+          this.$emit("form_close");
+          this.reset();
         })
         .catch((error) => {
           error;
-          this.$root.$emit("error_message", "Invalid Username or Password");
+          this.$root.$emit(
+            "error_message",
+            "Something went wrong. Please try again."
+          );
         });
     },
   },

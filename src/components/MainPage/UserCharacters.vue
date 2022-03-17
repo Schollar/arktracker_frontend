@@ -2,8 +2,9 @@
   <div class="character_container">
     <v-expansion-panels focusable class="characters">
       <v-expansion-panel v-for="char in user_characters" :key="char.charId">
-        <v-expansion-panel-header
-          >{{ char.name }} {{ char.class }}<v-spacer></v-spacer>
+        <v-expansion-panel-header>
+          <img class="class_icon" src="img_src" alt="Class Icon" />
+          {{ char.name }} {{ char.class }}<v-spacer></v-spacer>
         </v-expansion-panel-header>
         <character-tasks :character="char"></character-tasks>
       </v-expansion-panel>
@@ -18,17 +19,34 @@ export default {
   name: "user-characters",
   data() {
     return {
-      user_characters: [],
+      img_src: {
+        Berserker: "@/assets/berserker.png",
+        Paladin: "@/assets/paladin.png",
+        Gunlancer: "@/assets/gunlancer.png",
+        Striker: "@/assets/striker.png",
+        Wardancer: "@/assets/wardancer.png",
+        Scrapper: "@/assets/scrapper.png",
+        Soulfist: "@/assets/soulfist.png",
+        Gunslinger: "@/assets/gunslinger.png",
+        Artillerist: "@/assets/artillerist.png",
+        Deadeye: "@/assets/deadeye.png",
+        Sharpshooter: "@/assets/sharpshooter.png",
+        Bard: "@/assets/bard.png",
+        Sorceress: "@/assets/sorceress.png",
+        Shadowhunter: "@/assets/shadowhunter.png",
+        Deathblade: "@/assets/deathblade.png",
+      },
     };
+  },
+  computed: {
+    user_characters() {
+      return this.$store.state["user_characters"];
+    },
   },
   mounted() {
     this.get_characters();
-    this.$root.$on("add_character", this.add_char);
   },
   methods: {
-    add_char(char) {
-      this.user_characters.push(char);
-    },
     get_characters() {
       var userId = this.$cookies.get("userId");
       this.$axios
@@ -40,8 +58,7 @@ export default {
           },
         })
         .then((response) => {
-          this.user_characters = response.data;
-          // this.$store.commit("update_user_characters", response.data);
+          this.$store.commit("update_user_characters", response.data);
         })
         .catch((error) => {
           error;
@@ -60,5 +77,9 @@ export default {
 .character_container {
   display: grid;
   place-items: center;
+}
+.class_icon {
+  width: 50px;
+  height: 50px;
 }
 </style>
