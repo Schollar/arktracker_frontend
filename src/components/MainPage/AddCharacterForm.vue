@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-form ref="form" lazy-validation>
-      <h1>Start a Task</h1>
+      <h1>Add Character</h1>
       <v-text-field
         class="input"
         v-model="name"
@@ -12,14 +12,14 @@
       ></v-text-field>
       <v-select
         class="input"
-        v-model="type"
-        :items="items"
-        label="Task Type"
+        v-model="char_class"
+        :items="classes"
+        label="Class"
         dense
         dark
       ></v-select>
-      <v-btn color="#B58141" class="mr-4" @click="add_task" dark>
-        Start Task
+      <v-btn color="#B58141" class="mr-4" @click="add_character" dark>
+        Add Character
       </v-btn>
       <v-btn color="red" class="mr-4" @click="close_form" dark> Close </v-btn>
     </v-form>
@@ -31,11 +31,69 @@ export default {
   name: "add-character-form",
   data() {
     return {
-      items: ["Daily", "Weekly"],
+      name: "",
+      char_class: "",
+      charClass: "",
+      classes: [
+        "Berserker",
+        "Paladin",
+        "Gunlancer",
+        "Striker",
+        "Wardancer",
+        "Scrapper",
+        "Soulfist",
+        "Gunslinger",
+        "Artillerist",
+        "Deadeye",
+        "Sharpshooter",
+        "Bard",
+        "Sorceress",
+        "Shadowhunter",
+        "Deathblade",
+      ],
     };
+  },
+  methods: {
+    close_form() {
+      this.$emit("form_close");
+    },
+    add_character() {
+      var userId = this.$cookies.get("userId");
+      var charName = this.name;
+      var charClass = this.char_class;
+      this.$axios
+        .request({
+          url: `${process.env.VUE_APP_API_URL}/api/characters`,
+          method: "POST",
+          data: {
+            userId: userId,
+            charName: charName,
+            class: charClass,
+          },
+        })
+        // EMIT TO ADD CHARACTER TO LIST
+        .then((response) => {
+          this.$root.$emit("add_character", response.data);
+          // this.$store.commit("add_user_character", response.data);
+        })
+        .catch((error) => {
+          error;
+          this.$root.$emit("error_message", "Invalid Username or Password");
+        });
+    },
   },
 };
 </script>
 
 <style scoped>
+form {
+  position: absolute;
+  top: 25%;
+  z-index: 4;
+  color: white;
+}
+.input {
+  max-width: 75%;
+  margin-top: 20px;
+}
 </style>

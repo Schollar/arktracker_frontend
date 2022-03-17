@@ -1,4 +1,5 @@
 <template>
+  <!-- passing the taskId as an arg to the complete task function -->
   <v-btn icon class="task_button" @click="complete_task(taskId)"
     ><img class="button_icon" src="@/assets/success.png" alt="Trash can Icon" />
   </v-btn>
@@ -11,6 +12,7 @@ export default {
     taskId: Number,
   },
   methods: {
+    // Function that takes taskId as arg and sends it in the patch request data
     complete_task(taskId) {
       this.$axios
         .request({
@@ -20,14 +22,14 @@ export default {
             taskId: taskId,
           },
         })
-        // Emit another event to put task into completed task list.
+        // ##TODO Emit another event to put task into completed task list.
         .then((response) => {
           response;
           this.$root.$emit("delete_task", taskId);
           this.$root.$emit("success_message", "Task has been completed!");
         })
         .catch((error) => {
-          console.log(error.response);
+          error;
           this.$root.$emit(
             "error_message",
             "Something went wrong deleting the task."
@@ -47,6 +49,6 @@ export default {
   height: 25px !important;
 }
 .button_icon {
-  width: 25px;
+  width: 20px;
 }
 </style>

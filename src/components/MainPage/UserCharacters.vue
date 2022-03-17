@@ -16,15 +16,19 @@ import CharacterTasks from "./CharacterTasks.vue";
 export default {
   components: { CharacterTasks },
   name: "user-characters",
-  computed: {
-    user_characters() {
-      return this.$store.state.user_characters;
-    },
+  data() {
+    return {
+      user_characters: [],
+    };
   },
   mounted() {
     this.get_characters();
+    this.$root.$on("add_character", this.add_char);
   },
   methods: {
+    add_char(char) {
+      this.user_characters.push(char);
+    },
     get_characters() {
       var userId = this.$cookies.get("userId");
       this.$axios
@@ -35,15 +39,13 @@ export default {
             userId: userId,
           },
         })
-        // On success we set a cookie user cookie
-        // Call update user mutation
-        // Router push to change to the feed page
         .then((response) => {
-          this.$store.commit("update_user_characters", response.data);
+          this.user_characters = response.data;
+          // this.$store.commit("update_user_characters", response.data);
         })
         .catch((error) => {
-          console.log(error.response);
-          this.$root.$emit("error_message", "Invalid Username or Password");
+          error;
+          this.$root.$emit("error_message", "Unable to retrieve characters");
         });
     },
   },

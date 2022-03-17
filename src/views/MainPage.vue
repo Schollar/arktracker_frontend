@@ -1,16 +1,27 @@
 <template>
   <div class="page_body">
     <page-header></page-header>
+    <v-btn @click="form_visible = true">Add Character</v-btn>
     <user-characters></user-characters>
+    <add-character-form
+      v-show="form_visible"
+      @form_close="form_visible = false"
+    ></add-character-form>
   </div>
 </template>
 
 <script>
 import PageHeader from "../components/PageHeader.vue";
 import UserCharacters from "../components/MainPage/UserCharacters.vue";
+import AddCharacterForm from "../components/MainPage/AddCharacterForm.vue";
 export default {
-  components: { PageHeader, UserCharacters },
+  components: { PageHeader, UserCharacters, AddCharacterForm },
   name: "main-page",
+  data() {
+    return {
+      form_visible: false,
+    };
+  },
   mounted() {
     // Running login token check when page is mounted
     this.auth_user();

@@ -10,7 +10,7 @@
     </v-expansion-panel-content>
     <add-task-form
       :charId="character.charId"
-      @form_close="close_form"
+      @form_close="form_visible = false"
       v-show="form_visible"
     ></add-task-form>
   </div>

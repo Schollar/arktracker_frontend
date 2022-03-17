@@ -80,7 +80,7 @@ export default {
 <style scoped>
 .headline {
   display: grid;
-  font-size: 46px !important;
+  font-size: 32px !important;
   place-self: center !important;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
 }
