@@ -96,11 +96,15 @@ export default {
 form {
   position: absolute;
   top: 25%;
+  left: 12%;
   z-index: 4;
   color: white;
 }
 .input {
   max-width: 75%;
   margin-top: 20px;
+}
+h1 {
+  margin-top: 10px;
 }
 </style>

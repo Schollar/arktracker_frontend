@@ -17,6 +17,11 @@ export default new Vuex.Store({
     },
     add_user_character(state, payload) {
       state.user_characters.push(payload)
+    },
+    remove_user_character(state, payload) {
+      state.user_characters = state.user_characters.filter(
+        (char) => char.charId !== payload
+      );
     }
   },
   actions: {

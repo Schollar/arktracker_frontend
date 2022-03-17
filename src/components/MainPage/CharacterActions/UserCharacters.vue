@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import CharacterTasks from "./CharacterTasks.vue";
+import CharacterTasks from "../CharacterTasks.vue";
 export default {
   components: { CharacterTasks },
   name: "user-characters",
