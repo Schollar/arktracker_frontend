@@ -5,8 +5,8 @@
       <add-character-button></add-character-button>
       <remove-character-button></remove-character-button>
     </section>
-
     <user-characters></user-characters>
+    <chart-container></chart-container>
   </div>
 </template>
 
@@ -15,12 +15,14 @@ import PageHeader from "../components/PageHeader.vue";
 import UserCharacters from "../components/MainPage/CharacterActions/UserCharacters.vue";
 import AddCharacterButton from "../components/MainPage/CharacterActions/AddCharacterButton.vue";
 import RemoveCharacterButton from "../components/MainPage/CharacterActions/RemoveCharacterButton.vue";
+import ChartContainer from "../components/MainPage/UserStats/ChartContainer.vue";
 export default {
   components: {
     PageHeader,
     UserCharacters,
     AddCharacterButton,
     RemoveCharacterButton,
+    ChartContainer,
   },
   name: "main-page",
   mounted() {

@@ -3,9 +3,8 @@
     <v-expansion-panels focusable class="characters">
       <v-expansion-panel v-for="char in user_characters" :key="char.charId">
         <v-expansion-panel-header>
-          <img class="class_icon" :src="img_src[char.class]" alt="Class Icon" />
-          <v-spacer></v-spacer>
-          {{ char.name }}
+          <img class="class_icon" src="img_src" alt="Class Icon" />
+          {{ char.name }} {{ char.class }}<v-spacer></v-spacer>
         </v-expansion-panel-header>
         <character-tasks :character="char"></character-tasks>
       </v-expansion-panel>
@@ -21,21 +20,21 @@ export default {
   data() {
     return {
       img_src: {
-        Berserker: "/berserker1.png",
-        Paladin: "/paladin.png",
-        Gunlancer: "/gunlancer.png",
-        Striker: "/striker.png",
-        Wardancer: "/wardancer.png",
-        Scrapper: "/scrapper.png",
-        Soulfist: "/soulfist.png",
-        Gunslinger: "/gunslinger.png",
-        Artillerist: "/artillerist.png",
-        DeadEye: "/deadeye.png",
-        Sharpshooter: "/sharpshooter.png",
-        Bard: "/bard.png",
-        Sorceress: "/sorceress.png",
-        Shadowhunter: "/shadowhunter.png",
-        Deathblade: "/deathblade.png",
+        Berserker: "@/assets/berserker.png",
+        Paladin: "@/assets/paladin.png",
+        Gunlancer: "@/assets/gunlancer.png",
+        Striker: "@/assets/striker.png",
+        Wardancer: "@/assets/wardancer.png",
+        Scrapper: "@/assets/scrapper.png",
+        Soulfist: "@/assets/soulfist.png",
+        Gunslinger: "@/assets/gunslinger.png",
+        Artillerist: "@/assets/artillerist.png",
+        Deadeye: "@/assets/deadeye.png",
+        Sharpshooter: "@/assets/sharpshooter.png",
+        Bard: "@/assets/bard.png",
+        Sorceress: "@/assets/sorceress.png",
+        Shadowhunter: "@/assets/shadowhunter.png",
+        Deathblade: "@/assets/deathblade.png",
       },
     };
   },
@@ -73,20 +72,14 @@ export default {
 <style scoped>
 .characters {
   width: 70%;
-  margin-top: 25px;
+  margin-top: 50px;
 }
 .character_container {
   display: grid;
   place-items: center;
-  align-self: start;
 }
 .class_icon {
-  width: 47px;
-  height: 47px;
-  flex: none !important;
-}
-
-.spacer {
-  max-width: 50px;
+  width: 50px;
+  height: 50px;
 }
 </style>

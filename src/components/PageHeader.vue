@@ -15,9 +15,7 @@
       <section class="button_container" v-show="$vuetify.breakpoint.lgAndUp">
         <v-btn class="color primary white--text" to="/" exact>Home</v-btn>
         <v-btn class="color primary white--text" to="/about">Profile</v-btn>
-        <v-btn class="color primary white--text" @click="logout()"
-          >Log Out</v-btn
-        >
+        <v-btn class="color primary white--text" @click="logout">Log Out</v-btn>
       </section>
     </v-app-bar>
 
@@ -29,7 +27,7 @@
       <v-toolbar flat>
         <v-list>
           <v-list-item>
-            <v-list-item-title class="title">Menu</v-list-item-title>
+            <v-list-item-title class="title">Navigation</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-toolbar>
@@ -42,17 +40,17 @@
           </v-list-item-action>
           <v-list-item-content>Home</v-list-item-content>
         </v-list-item>
-        <v-list-item to="/about">
+        <v-list-item to="/profile">
           <v-list-item-action>
             <v-icon>description</v-icon>
           </v-list-item-action>
-          <v-list-item-content>About</v-list-item-content>
+          <v-list-item-content>Profile</v-list-item-content>
         </v-list-item>
-        <v-list-item to="/services">
+        <v-list-item to="/">
           <v-list-item-action>
             <v-icon>home</v-icon>
           </v-list-item-action>
-          <v-list-item-content>Services</v-list-item-content>
+          <v-list-item-content @click="logout">Log Out</v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
