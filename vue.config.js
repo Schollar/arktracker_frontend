@@ -8,7 +8,7 @@ module.exports = {
   ],
   devServer: {
     disableHostCheck: true,
-    proxy: 'http://localtesting.com',
+    // proxy: 'http://localtesting.com',
 
   }
 }

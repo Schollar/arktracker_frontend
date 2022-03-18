@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-btn @click="form_visible = true">Add Character</v-btn>
+  <div class="container">
+    <v-btn class="button" @click="form_visible = true">Add Character</v-btn>
     <add-character-form
       v-show="form_visible"
       @form_close="form_visible = false"
@@ -22,4 +22,13 @@ export default {
 </script>
 
 <style scoped>
+.button {
+  align-self: start;
+  width: 125px !important;
+  font-size: x-small;
+}
+.container {
+  align-self: start;
+  padding: 0 !important;
+}
 </style>

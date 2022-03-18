@@ -42,7 +42,6 @@ export default {
 
 <style scoped>
 .task_button {
-  justify-self: end;
   width: 42px !important;
   min-width: 40px !important;
   font-size: xx-small;
@@ -50,5 +49,6 @@ export default {
 }
 .button_icon {
   width: 20px;
+  place-self: end;
 }
 </style>

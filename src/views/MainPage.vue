@@ -1,8 +1,11 @@
 <template>
   <div class="page_body">
     <page-header></page-header>
-    <add-character-button></add-character-button>
-    <remove-character-button></remove-character-button>
+    <section class="character_button_container">
+      <add-character-button></add-character-button>
+      <remove-character-button></remove-character-button>
+    </section>
+
     <user-characters></user-characters>
   </div>
 </template>
@@ -38,6 +41,16 @@ export default {
 <style scoped>
 .page_body {
   background-color: #15161a;
+  display: grid;
+  place-items: center;
+  grid-template-rows: 1px 75px 1fr;
   height: 100%;
+}
+.character_button_container {
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
+  padding-top: 20px;
+  width: 70%;
 }
 </style>

@@ -78,10 +78,9 @@ export default {
 }
 .task_name {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: 1fr 30px 30px;
   font-weight: bold;
   place-items: start;
-  align-items: end;
 }
 
 .task_dividers {

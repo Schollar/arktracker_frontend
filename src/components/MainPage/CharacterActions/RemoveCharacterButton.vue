@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <v-btn @click="delete_form_visible = true">Delete Character</v-btn>
+  <div class="container">
+    <v-btn class="button" @click="delete_form_visible = true"
+      >Remove Character</v-btn
+    >
     <delete-character-form
       v-show="delete_form_visible"
       @delete_form_close="delete_form_visible = false"
@@ -24,4 +26,13 @@ export default {
 </script>
 
 <style scoped>
+.button {
+  justify-self: end;
+  width: 125px !important;
+  font-size: x-small;
+}
+.container {
+  padding: 0 !important;
+  display: grid;
+}
 </style>
