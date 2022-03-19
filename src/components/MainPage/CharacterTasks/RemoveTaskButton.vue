@@ -30,7 +30,10 @@ export default {
         })
         .catch((error) => {
           console.log(error.response);
-          this.$root.$emit("error_message", "Invalid Username or Password");
+          this.$root.$emit(
+            "error_message",
+            "There was an issue removing this task"
+          );
         });
     },
   },

@@ -22,7 +22,14 @@
     <!-- End of app toolbar -->
 
     <!-- Start of mobile side menu -->
-    <v-navigation-drawer app v-model="drawer" temporary bottom>
+    <v-navigation-drawer
+      app
+      v-model="drawer"
+      temporary
+      bottom
+      dark
+      class="mobile"
+    >
       <!-- Menu title -->
       <v-toolbar flat>
         <v-list>
@@ -36,19 +43,19 @@
       <v-list>
         <v-list-item to="/">
           <v-list-item-action>
-            <v-icon>home</v-icon>
+            <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>Home</v-list-item-content>
         </v-list-item>
         <v-list-item to="/profile">
           <v-list-item-action>
-            <v-icon>description</v-icon>
+            <v-icon>mdi-account</v-icon>
           </v-list-item-action>
           <v-list-item-content>Profile</v-list-item-content>
         </v-list-item>
         <v-list-item to="/">
           <v-list-item-action>
-            <v-icon>home</v-icon>
+            <v-icon>mdi-logout</v-icon>
           </v-list-item-action>
           <v-list-item-content @click="logout">Log Out</v-list-item-content>
         </v-list-item>
@@ -88,7 +95,8 @@ export default {
   grid-auto-flow: column;
   height: 100%;
 }
-.v-btn {
-  margin-left: 20px;
+
+.mobile {
+  height: 25vh !important;
 }
 </style>

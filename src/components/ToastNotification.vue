@@ -3,15 +3,7 @@
     <v-alert :value="success_alert" dismissible type="success">
       {{ success_message }}
     </v-alert>
-    <v-alert
-      color="red"
-      dense
-      dismissible
-      outlined
-      prominent
-      :value="error_alert"
-      type="error"
-    >
+    <v-alert color="red" dismissible :value="error_alert" type="error">
       {{ error_message }}
     </v-alert>
   </section>

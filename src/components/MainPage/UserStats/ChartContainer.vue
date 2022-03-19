@@ -17,6 +17,7 @@ export default {
     return {
       loaded: false,
       chartdata: null,
+      options:
     };
   },
   mounted() {
