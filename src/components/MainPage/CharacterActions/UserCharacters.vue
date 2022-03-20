@@ -1,22 +1,59 @@
 <template>
-  <div class="character_container">
-    <v-expansion-panels focusable class="characters">
-      <v-expansion-panel v-for="char in user_characters" :key="char.charId">
-        <v-expansion-panel-header>
-          <img class="class_icon" :src="img_src[char.class]" alt="Class Icon" />
-          <v-spacer></v-spacer>
-          {{ char.name }}
-        </v-expansion-panel-header>
-        <character-tasks :character="char"></character-tasks>
-      </v-expansion-panel>
-    </v-expansion-panels>
-  </div>
+  <!-- IF ROUTE IS PROFILE WE USE THE COMPONENT BUT DIFFERENT HTML ELSE WE USE THE OTHER HTML BELOW -->
+  <section class="card_container" v-if="$route.path === '/profile'">
+    <h1>Tracked Characters</h1>
+    <v-card
+      v-for="char in user_characters"
+      :key="char.charId"
+      class="mx-auto"
+      max-width="344"
+      outlined
+    >
+      <v-list-item three-line>
+        <v-list-item-avatar tile size="80"
+          ><img class="class_icon" :src="img_src[char.class]" alt="Class Icon"
+        /></v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title class="text-h5 mb-1">
+            {{ char.name }}
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-card-actions>
+        <remove-character-button></remove-character-button>
+      </v-card-actions>
+    </v-card>
+  </section>
+  <!-- START OF NON USER PROFILE HTML -->
+  <section v-else>
+    <div v-if="user_characters.length < 1">
+      <h1>Please add a character to start tracking tasks!</h1>
+    </div>
+    <div v-else class="character_container">
+      <v-expansion-panels focusable class="characters">
+        <v-expansion-panel v-for="char in user_characters" :key="char.charId">
+          <v-expansion-panel-header>
+            <img
+              class="class_icon"
+              :src="img_src[char.class]"
+              alt="Class Icon"
+            />
+            <v-spacer></v-spacer>
+            {{ char.name }}
+          </v-expansion-panel-header>
+          <character-tasks :character="char"></character-tasks>
+        </v-expansion-panel>
+      </v-expansion-panels>
+    </div>
+  </section>
 </template>
 
 <script>
 import CharacterTasks from "../CharacterTasks/CharacterTasks.vue";
+import RemoveCharacterButton from "./RemoveCharacterButton.vue";
 export default {
-  components: { CharacterTasks },
+  components: { CharacterTasks, RemoveCharacterButton },
   name: "user-characters",
   data() {
     return {
@@ -70,7 +107,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .characters {
   width: 70%;
   margin-top: 25px;
@@ -88,5 +125,18 @@ export default {
 
 .spacer {
   max-width: 50px;
+}
+
+.card_container {
+  width: 75%;
+  > h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.7rem !important;
+  }
+}
+.v-card {
+  margin-bottom: 50px;
 }
 </style>

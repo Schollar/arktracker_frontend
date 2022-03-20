@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <v-btn class="button" @click="delete_form_visible = true"
+    <v-btn class="button" color="#FE6464" @click="delete_form_visible = true"
       >Remove Character</v-btn
     >
     <delete-character-form
