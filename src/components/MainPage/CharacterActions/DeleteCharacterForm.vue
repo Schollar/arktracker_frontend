@@ -23,6 +23,11 @@
 <script>
 export default {
   name: "delete-character-form",
+  data() {
+    return {
+      name: "",
+    };
+  },
   methods: {
     //   First two functions close and reset the form
     close_form() {
