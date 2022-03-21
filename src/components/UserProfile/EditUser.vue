@@ -49,6 +49,7 @@ export default {
       this.$refs.form.reset();
     },
     edit_user() {
+      // Get userId from cookies and user info from user inputs
       var userId = this.$cookies.get("userId");
       var username = this.username;
       var email = this.email;
@@ -74,6 +75,7 @@ export default {
             password: password,
           },
         })
+        // Sending update user event to parent to update the user stored data. Sending success message event. Reset the form
         .then((response) => {
           this.$emit("update_user", response.data);
           this.$root.$emit("success_message", "Info has been updated!");

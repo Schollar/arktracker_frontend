@@ -3,6 +3,7 @@
   <nav>
     <!-- Start of app toolbar -->
     <v-app-bar app prominent src="../assets/banner.jpg">
+      <!-- Showing the mobile nav icon on medium and down breakpoints -->
       <v-app-bar-nav-icon
         color="#b58141"
         v-show="$vuetify.breakpoint.mdAndDown"
@@ -12,6 +13,7 @@
         >Ark Tracker</v-toolbar-title
       >
       <v-spacer></v-spacer>
+      <!-- SHowing buttons on lg and up breakpoints -->
       <section class="button_container" v-show="$vuetify.breakpoint.lgAndUp">
         <v-btn class="color primary white--text" to="/" exact>Home</v-btn>
         <v-btn class="color primary white--text" to="/profile">Profile</v-btn>
@@ -69,8 +71,10 @@
 export default {
   name: "page-header",
   methods: {
+    // Removing logintoken and userId cookie and sending back to sign in page
     logout() {
       this.$cookies.remove("logintoken");
+      this.$cookies.remove("userId");
       this.$router.push({ path: "/" });
     },
   },

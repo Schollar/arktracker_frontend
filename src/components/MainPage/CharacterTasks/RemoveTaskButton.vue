@@ -20,9 +20,8 @@ export default {
             taskId: taskId,
           },
         })
-        // On success we set a cookie user cookie
-        // Call update user mutation
-        // Router push to change to the feed page
+        // Sending event with the taskId to be removed from the locally stored list
+        // Send success message event
         .then((response) => {
           response;
           this.$root.$emit("delete_task", taskId);

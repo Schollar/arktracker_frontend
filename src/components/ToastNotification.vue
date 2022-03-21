@@ -31,6 +31,7 @@ export default {
     show_success: function (string) {
       this.success_message = string;
       this.success_alert = true;
+      // Setting interval to hide the message after 3 seconds
       setInterval(() => {
         this.success_alert = false;
       }, 3000);
@@ -47,43 +48,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.toast_card {
-  display: grid;
-  place-items: center;
-  width: 250px;
-  border: 1px solid white;
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  height: 150px;
-  position: fixed;
-  top: calc(50% - 125px); // half of width
-  left: calc(50% - 125px);
-
-  > p {
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-weight: 600;
-  }
-
-  > button {
-    width: 80%;
-    border-radius: 20px;
-    border: 1px solid black;
-    height: 25px;
-    background-color: #1d9bf0;
-    color: white;
-    font-family: sans-serif;
-    font-weight: 775;
-    margin-bottom: 10px;
-  }
-}
-
 .alert {
   width: 80%;
   position: absolute;
-  top: 80%;
+  top: 80vh;
   left: 10%;
 
   z-index: 2;

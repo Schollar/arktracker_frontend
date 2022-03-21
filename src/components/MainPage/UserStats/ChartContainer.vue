@@ -2,6 +2,7 @@
   <div class="small">
     <h1>Your Task Stats</h1>
     <div>
+      <!-- Sending info to chart -->
       <completion-pie-chart
         class="chart"
         v-if="loaded"
@@ -32,6 +33,7 @@ export default {
   },
   methods: {
     get_stats() {
+      // Getting userId from cookie
       var userId = this.$cookies.get("userId");
       this.$axios
         .request({
@@ -41,11 +43,12 @@ export default {
             userId: userId,
           },
         })
+        // Calling fill data function and sending response data as argument
         .then((response) => {
           this.fill_data(response.data);
         })
         .catch((error) => {
-          console.log(error);
+          error;
           this.$root.$emit(
             "error_message",
             "Unable to retrieve task statistics"
@@ -53,6 +56,7 @@ export default {
         });
     },
     fill_data(data) {
+      // Setting object of days, starting at sunday = 0
       var days = {
         0: 0,
         1: 0,
@@ -110,6 +114,7 @@ export default {
           },
         },
       };
+      // Only duration and easing work here, want to re visit one day
       this.options["animation"] = {
         duration: 2500,
         easing: "linear",

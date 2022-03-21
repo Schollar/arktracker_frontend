@@ -54,6 +54,7 @@ export default {
     };
   },
   methods: {
+    // Function to emit and close the form and reset it
     close_form() {
       this.$emit("form_close");
       this.reset();
@@ -62,6 +63,7 @@ export default {
       this.$refs.form.reset();
     },
     add_character() {
+      // Getting the userId from cookies and charname and class from user input
       var userId = this.$cookies.get("userId");
       var charName = this.name;
       var charClass = this.char_class;
@@ -75,10 +77,13 @@ export default {
             class: charClass,
           },
         })
+        // Calling a store mutation to add a character to list
+        // Closing and reseting the form, then sending a success message
         .then((response) => {
           this.$store.commit("add_user_character", response.data);
           this.$emit("form_close");
           this.reset();
+          this.$root.$emit("success_message", "Character has been added");
         })
         .catch((error) => {
           error;

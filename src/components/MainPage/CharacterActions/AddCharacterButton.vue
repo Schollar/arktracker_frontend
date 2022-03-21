@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- Variable setup to show the form or not and on click changes to true, child emits to change variable to false -->
     <v-btn class="button" @click="form_visible = true">Add Character</v-btn>
     <add-character-form
       v-show="form_visible"
@@ -30,5 +31,11 @@ export default {
 .container {
   align-self: start;
   padding: 0 !important;
+}
+@media only screen and (min-width: 1024px) {
+  .button {
+    width: 150px !important;
+    font-size: 12px;
+  }
 }
 </style>

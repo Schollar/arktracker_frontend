@@ -44,6 +44,8 @@
 
 <script>
 export default {
+  // RULES for the form, Username and PW both required and length rules. From vuetify docs.
+  //  Email must also be valid
   name: "signup-form",
   data: () => ({
     valid: true,
@@ -67,12 +69,12 @@ export default {
   }),
 
   methods: {
+    // Resets the form
     reset() {
       this.$refs.form.reset();
     },
     signup_user() {
       // Get the value from the username and password filled out and use that data to pass to our api call
-
       var username = this.username;
       var password = this.password;
       var email = this.email;
@@ -86,11 +88,10 @@ export default {
             email: email,
           },
         })
-        // On success we set a cookie user cookie
+        // On success we set a logintoken and userId cookie
         // Call update user mutation
-        // Router push to change to the feed page
+        // Router push to change to the main page
         .then((response) => {
-          response;
           this.$cookies.set("logintoken", response.data["loginToken"]);
           this.$store.commit("update_user", response.data);
           this.$cookies.set("userId", response.data["userId"]);
@@ -98,10 +99,7 @@ export default {
         })
         .catch((error) => {
           error;
-          this.$root.$emit(
-            "error_message",
-            "Invalid Username or password. Please try again."
-          );
+          this.$root.$emit("error_message", "Something went wrong signing up");
         });
     },
   },

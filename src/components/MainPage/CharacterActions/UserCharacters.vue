@@ -2,6 +2,7 @@
   <!-- IF ROUTE IS PROFILE WE USE THE COMPONENT BUT DIFFERENT HTML ELSE WE USE THE OTHER HTML BELOW -->
   <section class="card_container" v-if="$route.path === '/profile'">
     <h1>Tracked Characters</h1>
+    <!-- Loop through user characters -->
     <v-card
       v-for="char in user_characters"
       :key="char.charId"
@@ -27,11 +28,13 @@
   </section>
   <!-- START OF NON USER PROFILE HTML -->
   <section class="character_body" v-else>
+    <!-- Check to see if task list is empty to show message -->
     <div v-if="user_characters.length < 1">
       <h1>Please add a character to start tracking tasks!</h1>
     </div>
     <div v-else class="character_container">
       <v-expansion-panels focusable class="characters">
+        <!-- Loop through character list -->
         <v-expansion-panel v-for="char in user_characters" :key="char.charId">
           <v-expansion-panel-header>
             <img
@@ -86,6 +89,7 @@ export default {
   },
   methods: {
     get_characters() {
+      // Get the userId from the cookies
       var userId = this.$cookies.get("userId");
       this.$axios
         .request({
@@ -95,6 +99,7 @@ export default {
             userId: userId,
           },
         })
+        // Send data to store to mutate and add character to list
         .then((response) => {
           this.$store.commit("update_user_characters", response.data);
         })

@@ -35,6 +35,7 @@
 <script>
 export default {
   name: "login-form",
+  // RULES for the form, Username and PW both required and length rules. From vuetify docs.
   data: () => ({
     valid: true,
     username: "",
@@ -64,9 +65,9 @@ export default {
             password: password,
           },
         })
-        // On success we set a cookie user cookie
+        // On success we set a logintoken cookie and userId cookie
         // Call update user mutation
-        // Router push to change to the feed page
+        // Router push to change to the main page
         .then((response) => {
           response;
           this.$cookies.set("logintoken", response.data["loginToken"]);

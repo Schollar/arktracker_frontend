@@ -42,11 +42,13 @@ export default {
     };
   },
   methods: {
+    // Updating user data, turning variable to false to hide form
     update_user(data) {
       this.user = data;
       this.input_visible = false;
     },
     get_info() {
+      // Getting userId from cookies
       var userId = this.$cookies.get("userId");
       this.$axios
         .request({
@@ -56,12 +58,16 @@ export default {
             userId: userId,
           },
         })
+        // Setting user object to response data sent back
         .then((response) => {
           this.user = response.data;
         })
         .catch((error) => {
           error;
-          this.$root.$emit("error_message", "Unable to retrieve characters");
+          this.$root.$emit(
+            "error_message",
+            "Unable to retrieve user information"
+          );
         });
     },
   },

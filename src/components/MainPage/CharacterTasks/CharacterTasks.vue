@@ -31,16 +31,18 @@ export default {
     };
   },
   mounted() {
+    // On mounted we get the character tasks, also listen for child events to add and remove tasks
     this.get_characters_tasks();
     this.$root.$on("delete_task", this.delete_task);
     this.$root.$on("add_task", this.add_task);
   },
   methods: {
+    // Closes the form
     close_form() {
       this.form_visible = false;
     },
     add_task(task) {
-      console.log(task);
+      // If the task type is daily add it to the daily list, else add it to the weekly list
       if (task.taskType === "Daily") {
         this.character_tasks["daily"].push(task);
       } else {
@@ -48,6 +50,7 @@ export default {
       }
     },
     delete_task(taskId) {
+      // Filter through both daily and weekly lists to filter out(delete) the task based on the taskId sent as argument
       this.character_tasks["weekly"] = this.character_tasks["weekly"].filter(
         (task) => task.taskId !== taskId
       );
@@ -56,6 +59,7 @@ export default {
       );
     },
     get_characters_tasks() {
+      // Storing charId to variable to send to get tasks
       var charId = this.character.charId;
       this.$axios
         .request({
@@ -65,15 +69,16 @@ export default {
             charId: charId,
           },
         })
-        // On success we set a cookie user cookie
-        // Call update user mutation
-        // Router push to change to the feed page
+        // Setting character tasks list to data sent back
         .then((response) => {
           this.character_tasks = response.data;
         })
         .catch((error) => {
-          console.log(error.response);
-          this.$root.$emit("error_message", "Invalid Username or Password");
+          error;
+          this.$root.$emit(
+            "error_message",
+            "Something went wrong getting characters tasks"
+          );
         });
     },
   },

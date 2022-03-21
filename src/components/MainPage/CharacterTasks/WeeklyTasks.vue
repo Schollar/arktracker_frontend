@@ -4,9 +4,11 @@
       <h2>Weekly Tasks</h2>
     </section>
     <v-divider class="heading_divider"></v-divider>
+    <!-- Checking to see if weekly list is empty -->
     <section v-if="character_tasks['weekly'] < 1">
       <p>This character has no weekly tasks!</p>
     </section>
+    <!-- Loop through weekly list to display info on page -->
     <section
       class="tasks_container"
       v-else
@@ -30,8 +32,14 @@
 </template>
 
 <script>
+import RemoveTaskButton from "./RemoveTaskButton.vue";
+import FinishTaskButton from "./FinishTaskButton.vue";
 export default {
   name: "weekly-tasks",
+  components: {
+    RemoveTaskButton,
+    FinishTaskButton,
+  },
   props: {
     character_tasks: Object,
   },

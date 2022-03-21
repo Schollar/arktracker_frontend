@@ -8,9 +8,11 @@
     </section>
     <v-divider class="heading_divider"></v-divider>
     <section class="tasks">
+      <!-- Checking to see if task list is empty -->
       <section v-if="character_tasks['daily'] < 1">
         <p>This character has no daily tasks!</p>
       </section>
+      <!-- Looping through daily tasks to display on page -->
       <section
         class="tasks_container"
         v-else

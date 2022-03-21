@@ -42,6 +42,7 @@ export default {
     update_component(component) {
       this.current_component = component;
     },
+    // Checks to see if login token exits and sends to main page if it does
     auth_user() {
       if (this.$cookies.get("logintoken") !== null) {
         this.$router.push({ path: "/main-page" });

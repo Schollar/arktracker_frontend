@@ -98,11 +98,15 @@ form {
   margin-top: 10px;
   display: grid;
   place-items: center;
-
-  > p {
-    width: 65%;
-    text-align: center;
-    margin-top: 15px;
+}
+p {
+  width: 65%;
+  text-align: center;
+  margin-top: 15px;
+}
+@media only screen and (min-width: 1024px) {
+  p {
+    width: 100%;
   }
 }
 </style>

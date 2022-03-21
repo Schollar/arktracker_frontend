@@ -39,11 +39,17 @@ export default {
     charId: Number,
   },
   methods: {
+    // Close and reset form
     close_form() {
       this.$emit("form_close");
+      this.reset();
+    },
+    reset() {
+      this.$refs.form.reset();
     },
 
     add_task() {
+      // Getting the userId from cookies and other info from user inputs
       var userId = this.$cookies.get("userId");
       var taskname = this.name;
       var taskdescription = this.description;
@@ -57,18 +63,22 @@ export default {
             taskName: taskname,
             taskDescription: taskdescription,
             taskType: tasktype,
+            // Sending the charId aswell to get the tasks for this char
             charId: this.charId,
           },
         })
+        // Setting the data to a variable to send off in an event to add the task to the characters task list already stored
+        // Close, reset and send a success message
         .then((response) => {
           var new_task = response.data;
           this.$emit("form_close");
           this.$root.$emit("success_message", "Tracking new task!");
           this.$root.$emit("add_task", new_task);
+          this.reset();
         })
         .catch((error) => {
           error;
-          this.$root.$emit("error_message", "Invalid Username or Password");
+          this.$root.$emit("error_message", "Error adding task");
         });
     },
   },
@@ -87,6 +97,7 @@ export default {
 form {
   position: absolute;
   top: 25%;
+  left: -4%;
   z-index: 4;
   color: white;
   border: 1px solid #212329;
