@@ -89,9 +89,19 @@ form {
   top: 25%;
   z-index: 4;
   color: white;
+  border: 1px solid #212329;
+  border-radius: 15px;
+  background-color: #212329;
+  display: grid;
+  width: 75vw;
+  place-items: center;
+}
+.v-btn {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 .input {
-  max-width: 75%;
+  width: 75%;
   margin-top: 20px;
 }
 </style>

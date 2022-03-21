@@ -99,4 +99,8 @@ export default {
 .mobile {
   height: 25vh !important;
 }
+
+.v-btn {
+  margin-right: 20px;
+}
 </style>

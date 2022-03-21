@@ -1,11 +1,16 @@
 <template>
   <div class="small">
     <h1>Your Task Stats</h1>
-    <completion-pie-chart
-      v-if="loaded"
-      :chartData="chartdata"
-      :options="options"
-    ></completion-pie-chart>
+    <div>
+      <completion-pie-chart
+        class="chart"
+        v-if="loaded"
+        :chartData="chartdata"
+        :options="options"
+        :width="1000"
+        :height="700"
+      ></completion-pie-chart>
+    </div>
   </div>
 </template>
 
@@ -125,5 +130,13 @@ export default {
   color: white;
   max-width: 75vw;
   margin: 150px auto;
+}
+@media only screen and (max-width: 600px) {
+  .small {
+    max-width: 90vw !important;
+  }
+  .chart {
+    width: 100% !important;
+  }
 }
 </style>

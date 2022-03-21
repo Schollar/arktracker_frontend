@@ -51,10 +51,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.tasks {
+  width: 100%;
+}
+.daily_container {
+  display: grid;
+  place-items: center;
+}
 .tasks_headings {
+  justify-self: start;
   display: grid;
   grid-auto-flow: column;
+  width: 100%;
   place-items: center;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -67,14 +76,13 @@ export default {
 }
 
 .heading_divider {
-  width: 150%;
-  max-width: 275px !important;
-  margin-left: -24px;
+  width: 100%;
   background-color: darkgrey;
 }
 .tasks_container {
   margin-bottom: 20px;
   margin-top: 20px;
+  width: 100%;
 }
 .task_name {
   display: grid;
@@ -85,5 +93,23 @@ export default {
 
 .task_dividers {
   margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+  h2 {
+    justify-self: end;
+    margin-left: 40px;
+  }
+  .add_task {
+    justify-self: end;
+    font-weight: bolder;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .add_task {
+    font-size: 12px;
+    width: 75px;
+    height: 38px !important;
+  }
 }
 </style>

@@ -17,7 +17,10 @@
           </v-list-item-content>
         </v-list-item>
         <v-card-actions>
-          <edit-user v-show="input_visible"></edit-user>
+          <edit-user
+            @update_user="update_user"
+            v-show="input_visible"
+          ></edit-user>
         </v-card-actions>
       </v-card>
     </section>
@@ -39,6 +42,10 @@ export default {
     };
   },
   methods: {
+    update_user(data) {
+      this.user = data;
+      this.input_visible = false;
+    },
     get_info() {
       var userId = this.$cookies.get("userId");
       this.$axios

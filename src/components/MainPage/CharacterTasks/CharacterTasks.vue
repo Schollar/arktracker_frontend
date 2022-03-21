@@ -84,4 +84,6 @@ export default {
 </script>
 
 <style scoped>
+@media only screen and (max-width: 600px) {
+}
 </style>

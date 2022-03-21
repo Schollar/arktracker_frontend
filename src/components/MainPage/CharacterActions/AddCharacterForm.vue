@@ -92,16 +92,26 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 form {
   position: absolute;
   top: 25%;
   left: 12%;
   z-index: 4;
   color: white;
+  border: 1px solid #212329;
+  border-radius: 15px;
+  background-color: #212329;
+  display: grid;
+  width: 75vw;
+  place-items: center;
+}
+.v-btn {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 .input {
-  max-width: 75%;
+  width: 75%;
   margin-top: 20px;
 }
 h1 {

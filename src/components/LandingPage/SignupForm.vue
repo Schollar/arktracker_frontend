@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form" v-model="valid" lazy-validation>
+  <v-form class="signup_form" ref="form" v-model="valid" lazy-validation>
     <v-text-field
       class="input"
       v-model="username"
@@ -108,8 +108,8 @@ export default {
 };
 </script>
 
-<style>
-form {
+<style scoped>
+.signup_form {
   border: 1px solid #212329;
   border-radius: 15px;
   background-color: #212329;

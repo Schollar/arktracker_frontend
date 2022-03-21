@@ -26,7 +26,7 @@
     </v-card>
   </section>
   <!-- START OF NON USER PROFILE HTML -->
-  <section v-else>
+  <section class="character_body" v-else>
     <div v-if="user_characters.length < 1">
       <h1>Please add a character to start tracking tasks!</h1>
     </div>
@@ -116,6 +116,7 @@ export default {
   display: grid;
   place-items: center;
   align-self: start;
+  width: 100%;
 }
 .class_icon {
   width: 47px;
@@ -138,5 +139,8 @@ export default {
 }
 .v-card {
   margin-bottom: 50px;
+}
+.character_body {
+  width: 100%;
 }
 </style>
