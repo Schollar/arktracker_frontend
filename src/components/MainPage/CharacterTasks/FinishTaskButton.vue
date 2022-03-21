@@ -32,7 +32,7 @@ export default {
           error;
           this.$root.$emit(
             "error_message",
-            "Something went wrong deleting the task."
+            "Something went wrong completing the task."
           );
         });
     },

@@ -17,10 +17,7 @@
     >
       <section class="task_name">
         {{ task.taskName }}
-        <finish-task-button
-          :taskId="task.taskId"
-          @update_tasks="update_task"
-        ></finish-task-button>
+        <finish-task-button :taskId="task.taskId"></finish-task-button>
         <remove-task-button :taskId="task.taskId"></remove-task-button>
       </section>
       <v-divider class="task_dividers"></v-divider>
