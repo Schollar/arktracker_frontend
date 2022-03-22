@@ -6,6 +6,7 @@
       <user-info></user-info>
       <user-characters></user-characters>
     </section>
+    <page-footer></page-footer>
   </div>
 </template>
 
@@ -13,8 +14,9 @@
 import PageHeader from "../components/PageHeader.vue";
 import UserInfo from "../components/UserProfile/UserInfo.vue";
 import UserCharacters from "../components/MainPage/CharacterActions/UserCharacters.vue";
+import PageFooter from "../components/PageFooter.vue";
 export default {
-  components: { PageHeader, UserInfo, UserCharacters },
+  components: { PageHeader, UserInfo, UserCharacters, PageFooter },
   name: "user-profile",
   computed: {
     user_characters() {
@@ -50,5 +52,8 @@ export default {
     margin-bottom: 20px;
     font-size: 1.7rem !important;
   }
+}
+h1 {
+  color: #b58141 !important;
 }
 </style>

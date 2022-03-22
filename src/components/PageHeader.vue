@@ -9,7 +9,7 @@
         v-show="$vuetify.breakpoint.mdAndDown"
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
-      <v-toolbar-title class="headline text-uppercase primary--text"
+      <v-toolbar-title class="headline text-uppercase"
         >Ark Tracker</v-toolbar-title
       >
       <v-spacer></v-spacer>
@@ -90,6 +90,7 @@ export default {
 .headline {
   display: grid;
   font-size: 32px !important;
+  color: #fe6464;
   place-self: center !important;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
 }
@@ -105,6 +106,11 @@ export default {
 }
 
 .v-btn {
-  margin-right: 20px;
+  margin-right: 50px;
+}
+@media only screen and (min-width: 1024px) {
+  .spacer {
+    max-width: 475px;
+  }
 }
 </style>

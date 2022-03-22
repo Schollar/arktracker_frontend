@@ -100,4 +100,9 @@ form {
 button {
   margin-bottom: 20px;
 }
+@media only screen and (min-width: 1024px) {
+  form {
+    width: 35vw;
+  }
+}
 </style>

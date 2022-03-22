@@ -12,22 +12,36 @@
       <div v-show="!current_component"></div>
       <section class="backup_section" v-if="current_component === 'SignupForm'">
         <p>Already a user?</p>
-        <button @click="update_component(component_views[1])">Login</button>
+        <v-btn
+          color="#B58141"
+          class="mr-4"
+          dark
+          @click="update_component(component_views[1])"
+          >Login</v-btn
+        >
       </section>
       <section class="backup_section" v-else>
         <p>Not a User Yet?</p>
-        <button @click="update_component(component_views[0])">Signup</button>
+        <v-btn
+          color="#B58141"
+          class="mr-4"
+          dark
+          @click="update_component(component_views[0])"
+          >Signup</v-btn
+        >
       </section>
     </section>
+    <page-footer></page-footer>
   </div>
 </template>
 
 <script>
 import LoginForm from "@/components/LandingPage/LoginForm.vue";
 import SignupForm from "@/components/LandingPage/SignupForm.vue";
+import PageFooter from "../components/PageFooter.vue";
 export default {
   name: "landing-page",
-  components: { LoginForm, SignupForm },
+  components: { LoginForm, SignupForm, PageFooter },
   data() {
     return {
       current_component: "LoginForm",
@@ -68,36 +82,26 @@ section {
     margin: 10px;
     width: 70%;
     color: #b58141;
+    text-align: center;
     font-size: small;
   }
 }
 .backup_section {
   display: grid;
-  width: 75%;
+  width: 100%;
   place-items: center;
 
   > p {
+    padding-right: 16px;
     font-weight: 700;
     text-align: center;
     color: #b58141;
-  }
-
-  > button {
-    border-radius: 20px;
-    border: 1px solid black;
-    height: 25px;
-    width: 65%;
-    background-color: #b58141;
-    color: white;
-    font-family: sans-serif;
-    font-weight: 775;
-    margin-bottom: 15px;
   }
 }
 
 .title {
   font-size: 3em !important;
-  color: #dd163b;
+  color: #fe6464;
   margin-bottom: 15px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
 }
@@ -105,5 +109,11 @@ section {
 .form_container {
   place-self: start;
   justify-self: center;
+}
+@media only screen and (min-width: 1024px) {
+  p {
+    font-size: 1rem !important;
+    text-align: center;
+  }
 }
 </style>

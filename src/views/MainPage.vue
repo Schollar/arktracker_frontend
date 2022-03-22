@@ -7,6 +7,7 @@
     </section>
     <user-characters></user-characters>
     <chart-container></chart-container>
+    <page-footer></page-footer>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import UserCharacters from "../components/MainPage/CharacterActions/UserCharacte
 import AddCharacterButton from "../components/MainPage/CharacterActions/AddCharacterButton.vue";
 import RemoveCharacterButton from "../components/MainPage/CharacterActions/RemoveCharacterButton.vue";
 import ChartContainer from "../components/MainPage/UserStats/ChartContainer.vue";
+import PageFooter from "../components/PageFooter.vue";
 export default {
   components: {
     PageHeader,
@@ -23,6 +25,7 @@ export default {
     AddCharacterButton,
     RemoveCharacterButton,
     ChartContainer,
+    PageFooter,
   },
   name: "main-page",
   mounted() {
@@ -54,7 +57,5 @@ export default {
   grid-auto-flow: column;
   padding-top: 20px;
   width: 70%;
-}
-@media only screen and (max-width: 600px) {
 }
 </style>

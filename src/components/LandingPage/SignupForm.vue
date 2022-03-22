@@ -114,6 +114,7 @@ export default {
   display: grid;
   width: 75vw;
   place-items: center;
+  padding-top: 15px;
 }
 .input {
   width: 75%;
@@ -122,5 +123,10 @@ export default {
   margin-bottom: 20px;
   justify-self: center;
   margin-left: 10px;
+}
+@media only screen and (min-width: 1024px) {
+  .signup_form {
+    width: 35vw;
+  }
 }
 </style>

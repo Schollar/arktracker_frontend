@@ -29,7 +29,7 @@
   <!-- START OF NON USER PROFILE HTML -->
   <section class="character_body" v-else>
     <!-- Check to see if task list is empty to show message -->
-    <div v-if="user_characters.length < 1">
+    <div class="character_container" v-if="user_characters.length < 1">
       <h1>Please add a character to start tracking tasks!</h1>
     </div>
     <div v-else class="character_container">
@@ -147,5 +147,10 @@ export default {
 }
 .character_body {
   width: 100%;
+}
+
+h1 {
+  text-align: center;
+  color: #b58141 !important;
 }
 </style>
