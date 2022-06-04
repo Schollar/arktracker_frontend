@@ -6,8 +6,6 @@ To-Do style app for the game of Lost Ark. Add/delete characters and track daily/
 
 ### Technologies
 
-- VueJs
-- Vuetify
 - Axios version: 0.26.1
 - Chart.js version: 2.9.4
 - cookies version: 0.8.0
